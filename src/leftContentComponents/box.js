@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "../cssFiles/boxes.module.css";
 
 const Box = () => {
   return (
