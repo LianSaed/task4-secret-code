@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const circlesSlice = createSlice({
-    name: 'boxes',
+    name: 'circles',
     initialState: {
       items: [],
       totalQuantity: 0,
