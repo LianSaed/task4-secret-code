@@ -14,7 +14,9 @@ const boxesSlice = createSlice({
   reducers: {
     setBoxes(state, action) {
       const boxValue = action.payload;
-      state.boxesValues[boxValue.index] = boxValue.value;
+      let index = parseInt(boxValue.index + "");
+      let value = parseInt(boxValue.value + "");
+      state.boxesValues[index] = value;
       console.log(`the random key is ${state.RandomValues}`);
     },
     incrementEnableIndex(state) {
@@ -24,24 +26,32 @@ const boxesSlice = createSlice({
       let correctRightPlace = 0;
       let correctWrongPlace = 0;
       let uncorrect = 0;
-
+      let tempRandArray = state.RandomValues;
+      let tempBoxArray = state.boxesValues;
       for (let i = 0; i < 4; i++) {
+        let tempIndex = -1;
+
         let tempValue = state.RandomValues[i];
-        if (state.boxesValues.includes(tempValue)) {
-          let tempIndex = state.boxesValues.indexOf(tempValue);
+        for (var j = 0; j < tempBoxArray.length; j++) {
+          if (tempBoxArray[j] === tempValue) {
+            tempIndex = j;
+            break;
+          }
+        }
+        console.log(tempIndex);
+        if (tempIndex !== -1) {
           if (tempIndex === i) {
             correctRightPlace++;
-          } else if (
-            state.RandomValues[tempIndex] !== state.boxesValues[tempIndex]
-          ) {
+            tempBoxArray[tempIndex] = NaN;
+          } else if (tempRandArray[tempIndex] !== tempBoxArray[tempIndex]) {
             //what can be correct but in wrong place can also be correct and in right place for other boxes
             correctWrongPlace++;
+            tempBoxArray[tempIndex] = NaN;
           }
         } else {
           uncorrect++;
         }
-        state.boxesValues.shift();
-        console.log(`myArray values: ${state.boxesValues}`);
+        //tempRandArray.shift();
       }
       state.circleStates.push({
         index: state.currentEnabledIndex,
