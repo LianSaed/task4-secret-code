@@ -1,23 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
-//Math.floor(Math.random() * 10);
 
 const boxesSlice = createSlice({
   name: "boxes",
   initialState: {
-    boxesValues: [4],
-    RandomValues: Array(4)
-      .fill()
-      .map(() => Math.floor(10 * Math.random())), //fill array of size 4 with random numbers from 0 to 9
+    boxesValues: [],
+    RandomValues: [],
     circleStates: [],
-    currentEnabledIndex: 0,
+    currentEnabledIndex: NaN,
   },
   reducers: {
+      start(state) {
+          state.RandomValues = Array(4).fill().map(() => Math.floor(10 * Math.random())); //fill array of size 4 with random numbers from 0 to 9
+          state.currentEnabledIndex = 0;
+          console.log(`the random key is ${state.RandomValues}`);
+        },
+      end(state) {
+        state.currentEnabledIndex = NaN;
+      }
+      ,
     setBoxes(state, action) {
       const boxValue = action.payload;
       let index = parseInt(boxValue.index + "");
       let value = parseInt(boxValue.value + "");
       state.boxesValues[index] = value;
-      console.log(`the random key is ${state.RandomValues}`);
     },
     incrementEnableIndex(state) {
       state.currentEnabledIndex++;
@@ -30,7 +35,6 @@ const boxesSlice = createSlice({
       let tempBoxArray = state.boxesValues;
       for (let i = 0; i < 4; i++) {
         let tempIndex = -1;
-
         let tempValue = state.RandomValues[i];
         for (var j = 0; j < tempBoxArray.length; j++) {
           if (tempBoxArray[j] === tempValue) {

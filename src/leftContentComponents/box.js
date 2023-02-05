@@ -8,27 +8,29 @@ const Box = (props) => {
   );
 
   const dispatch = useDispatch();
-  let rowBoxes = Array.apply(null, Array(4)).map(Number.prototype.valueOf, 0);
+  let rowBoxes = Array.apply(null, Array(4)).map((boxValue, index) => {
+    return (<div key={Math.random()}>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        maxLength="1"
+        size="10"
+        disabled={currentEnabledIndex !== props.boxLineIndex}
+        autoComplete="off"
+        onChange={(e) => handleChange(index, e)}
+      />
+    </div>);
+  });
+
   const handleChange = (index, event) => {
     let value = event.target.value;
     dispatch(boxesActions.setBoxes({ value, index }));
+
   };
   return (
     <>
-      {rowBoxes.map((boxValue, index) => (
-        <div key={Math.random()}>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            maxLength="1"
-            size="10"
-            disabled={currentEnabledIndex !== props.boxLineIndex}
-            autoComplete="off"
-            onChange={(e) => handleChange(index, e)}
-          />
-        </div>
-      ))}
+      {rowBoxes}
     </>
   );
 };
