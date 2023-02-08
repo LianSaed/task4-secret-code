@@ -4,23 +4,24 @@
     color: #1ad1b9;
     padding: 12px 20px;
     margin: 6px;
-    
+
 }
 
 .button span {
     margin: 0 0.5rem;
 }
 
-.diplay-of-buttons{
+.diplay-of-buttons {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(8, 0.1fr);
     gap: 10px;
     padding: 20px;
 }
+
 button:disabled,
-button[disabled]{
-  border: 1px solid #999999;
-  background-color: #cccccc;
-  color: #666666;
+button[disabled] {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
 }

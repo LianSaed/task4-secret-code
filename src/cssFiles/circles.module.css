@@ -1,4 +1,4 @@
-.diplay-of-circles{
+.diplay-of-circles {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(8, 0.1fr);
@@ -6,6 +6,7 @@
     padding: 20px;
     flex: 1;
 }
+
 .circle {
     height: 50px;
     width: 50px;
@@ -14,9 +15,10 @@
     border: 1px solid black;
 }
 
-.blue-circle{
+.blue-circle {
     background-color: rgb(255, 255, 255);
 }
-.white-circle{
+
+.white-circle {
     background-color: rgb(0, 0, 255);
 }

@@ -3,6 +3,12 @@ import styles from "../cssFiles/container.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { boxesActions } from "../store/boxCheck";
 
+/**
+ * creates the start button component, and it shows results depending on states
+ * @returns button
+ * @returns final results
+ */
+
 const RightContent = () => {
   const [showResult, setShowResult] = useState(false);
   const [winner, setWinner] = useState(false);
@@ -13,7 +19,6 @@ const RightContent = () => {
   );
   const circleStates = useSelector((state) => state.boxes.circleStates);
   const secretCodeKey = useSelector((state) => state.boxes.RandomValues);
-  ///parseInt(circleStates[currentEnabledIndex].correctRightPlace + "")
 
   const startButtonHandler = () => {
     dispatch(boxesActions.start());
@@ -26,12 +31,14 @@ const RightContent = () => {
   useEffect(() => {
     if (circleStates.length >= 1) {
       if (
-        parseInt(circleStates[circleStates.length - 1].correctRightPlace + "") === 4
+        parseInt(
+          circleStates[circleStates.length - 1].correctRightPlace + ""
+        ) === 4
       ) {
         setShowResult(true);
         setWinner(true);
         dispatch(boxesActions.end());
-      } else if (circleStates.length === 7) {
+      } else if (circleStates.length === 8) {
         setShowResult(true);
         setLoser(true);
         dispatch(boxesActions.end());
