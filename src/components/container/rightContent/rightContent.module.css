@@ -1,0 +1,23 @@
+.containerRightContent {
+    border: 1px solid black;
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerRightButton {
+    background-color: transparent;
+    border-color: hsl(172, 78%, 46%);
+    color: #1ad1b9;
+    height: 7%;
+    min-width: 25%;
+    font-size: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+}
