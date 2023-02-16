@@ -1,0 +1,15 @@
+.circle {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 1px solid black;
+}
+
+.blueCircle {
+    background-color: rgb(255, 255, 255);
+}
+
+.whiteCircle {
+    background-color: rgb(0, 0, 255);
+}
